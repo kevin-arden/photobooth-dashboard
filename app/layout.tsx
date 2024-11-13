@@ -1,6 +1,8 @@
+// app/layout.ts
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import SessionLayout from "./SessionLayout"; // Import the new SessionLayout component
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,15 +22,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <SessionLayout>{children}</SessionLayout>
       </body>
     </html>
   );
